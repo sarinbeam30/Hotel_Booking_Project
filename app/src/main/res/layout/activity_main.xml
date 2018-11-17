@@ -9,50 +9,97 @@
     tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/delio_boutique_hotel_textview"
         android:layout_width="222dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Delio Boutique Hotel"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="94dp"
+        android:text="@string/Delio_Boutique_Hotel"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/check-out_DatePickerDialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22000003" />
 
     <TextView
-        android:id="@+id/checkin_label"
+        android:id="@+id/checkin_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="32dp"
-        android:text="Check-in"
+        android:text="@string/check_in"
         android:textColor="@color/colorAccent"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/delio_boutique_hotel_textview" />
 
     <TextView
-        android:id="@+id/checkout_label"
+        android:id="@+id/checkout_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Check-out"
+        android:text="@string/check_out"
         android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/delio_boutique_hotel_textview"
+        app:layout_constraintStart_toEndOf="@+id/delio_boutique_hotel_textview"
+        app:layout_constraintTop_toBottomOf="@+id/delio_boutique_hotel_textview" />
 
     <TextView
-        android:id="@+id/check-in_date"
-        android:layout_width="148dp"
+        android:id="@+id/check-in_DatePickerDialog"
+        android:layout_width="0dp"
         android:layout_height="28dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginLeft="53dp"
-        android:layout_marginTop="32dp"
-        android:text="check-in_date"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        android:text="@string/check_in_DATE_PICKER"
         android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/check-out_DatePickerDialog"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkin_label" />
+        app:layout_constraintTop_toBottomOf="@+id/checkin_textview" />
+
+    <TextView
+        android:id="@+id/arrow_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:text="@string/arrow"
+        android:textColor="@color/colorAccent"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toStartOf="@+id/checkout_textview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/check-in_DatePickerDialog"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <TextView
+        android:id="@+id/check-out_DatePickerDialog"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="378dp"
+        android:text="@string/check_out_DATE_PICKER"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check-in_DatePickerDialog"
+        app:layout_constraintTop_toBottomOf="@+id/delio_boutique_hotel_textview" />
 
 </android.support.constraint.ConstraintLayout>

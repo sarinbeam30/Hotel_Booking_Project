@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Hotel_Booking</string>
+    <string name="Delio_Boutique_Hotel">Delio Boutique Hotel</string>
+    <string name="check_in">Check-in</string>
+    <string name="check_in_DATE_PICKER">IN_DATE_PICKER</string>
+
+    <string name="arrow">\u21E8</string>
+
+    <string name="check_out">Check-out</string>
+    <string name="check_out_DATE_PICKER">OUT_DATE_PICKER</string>
+
+
+
 </resources>
