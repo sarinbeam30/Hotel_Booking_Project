@@ -1,13 +1,25 @@
 <resources>
     <string name="app_name">Hotel_Booking</string>
     <string name="Delio_Boutique_Hotel">Delio Boutique Hotel</string>
-    <string name="check_in">Check-in</string>
-    <string name="check_in_DATE_PICKER">IN_DATE_PICKER</string>
 
-    <string name="arrow">\u21E8</string>
+    <string name="check_in">Check-in</string>
+    <string name="check_in_DATE_PICKER">XX_XXX_XXXX</string>
+
+
 
     <string name="check_out">Check-out</string>
-    <string name="check_out_DATE_PICKER">OUT_DATE_PICKER</string>
+    <string name="check_out_DATE_PICKER">XX_XXX_XXXX</string>
+
+    <string name="room_and_family">1 Room 1 Adults 0 children</string>
+
+    <string name="guests">Guests details</string>
+
+    /*Arrow*/
+    <string name="back_arrow">\u2190</string>
+    <string name="arrow">\u21E8</string>
+
+
+    /*Button*/
 
 
 
