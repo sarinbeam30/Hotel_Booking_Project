@@ -1,4 +1,5 @@
 <resources>
+    /*first_page*/
     <string name="app_name">Hotel_Booking</string>
     <string name="Delio_Boutique_Hotel">Delio Boutique Hotel</string>
 
@@ -6,21 +7,36 @@
     <string name="check_in_DATE_PICKER">XX_XXX_XXXX</string>
 
 
-
     <string name="check_out">Check-out</string>
     <string name="check_out_DATE_PICKER">XX_XXX_XXXX</string>
 
     <string name="room_and_family">1 Room 1 Adults 0 children</string>
 
-    <string name="guests">Guests details</string>
+    <string name="first_name_and_last_name">First and last name</string>
+    <string name="name_editText">Please insert your name</string>
+    <string name="name_auto_fillhint">username</string>
+    <string name="email">Email</string>
+    <string name="email_editText">Please insert your email</string>
+    <string name="phone">Phone</string>
+    <string name="phone_editText">Please insert your phone number</string>
+    <string name="next_button">NEXT</string>
+
+
 
     /*Arrow*/
     <string name="back_arrow">\u2190</string>
     <string name="arrow">\u21E8</string>
 
-
     /*Button*/
+    <string name="minus">\u2796</string>
+    <string name="plus">\u2795</string>
 
+    /*second_page*/
+    <string name="guests">Guests details</string>
+    <string name="rooms"> 1 Room</string>
+    <string name="adult"> 1 Adult</string>
+    <string name="children"> 0 Children</string>
+    <string name="ok"> ok</string>
 
 
 </resources>

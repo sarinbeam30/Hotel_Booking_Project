@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,7 +22,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final String TAG = "MAIN";
     public String check_in_day, check_in_month_string, check_in_year;
     public String check_out_day, check_out_month, check_out_year;
 
@@ -152,6 +153,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Intent
+        Intent intent = getIntent();
+        int room = intent.getIntExtra("ROOM",1);
+        int adult = intent.getIntExtra("ADULT", 1);
+        int children = intent.getIntExtra("CHILDREN",0);
+
+        Log.d(TAG, "OnCreate");
 
         //TEXT_VIEW_CHECK_IN_DATE
         text_view_check_in_date = (TextView) findViewById(R.id.check_in_DatePickerDialog);
@@ -193,12 +201,13 @@ public class MainActivity extends AppCompatActivity {
 
         //TEXT_VIEW_ROOM_AND_FAM
         room_and_family =  (TextView) findViewById(R.id.room_and_family_textview);
+        System.out.println("ROOM : " + room);
+        System.out.println("ADULT : " + adult);
+        System.out.println("CHILDREN : " + children);
+
+        //CASE_1 :
+        room_and_family.setText(String.valueOf(room) + " Room " + String.valueOf(adult) + " Adult " + String.valueOf(children) + " Children");
         room_and_family.setOnClickListener(second_page);
-
-
-
-
-
 
         //FRAME_LAYOUT_CHECK_IN_AND_CHECK_OUT
         check_in_and_check_out = (ConstraintLayout) findViewById(R.id.check_in_and_check_out);
