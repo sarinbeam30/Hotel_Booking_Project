@@ -36,7 +36,7 @@
 
         android:visibility="visible"
 
-        app:layout_constraintBottom_toTopOf="@+id/name_editText"
+        app:layout_constraintBottom_toTopOf="@+id/first_name_editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,11 +154,11 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/first_name_and_last_name_textView"
+        android:id="@+id/first_name_textView"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
-        android:text="@string/first_name_and_last_name"
+        android:text="@string/first_name"
         android:textColor="@color/Black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -166,25 +166,56 @@
         app:layout_constraintTop_toBottomOf="@+id/room_and_fam_layout" />
 
     <EditText
-        android:id="@+id/name_editText"
-        android:layout_width="0dp"
+        android:id="@+id/first_name_editText"
+        android:layout_width="174dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/name_editText"
+        android:hint="@string/first_name_editText"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+
         android:singleLine="true"
         android:textColor="@color/Black"
         android:textColorHint="@color/gray"
         android:textSize="16sp"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_and_last_name_textView" />
+        app:layout_constraintEnd_toEndOf="@+id/first_name_textView"
+        app:layout_constraintStart_toEndOf="@+id/first_name_textView"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_textView"
+        tools:targetApi="O" />
+
+    <TextView
+        android:id="@+id/last_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/last_name"
+        android:textColor="@color/Black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/first_name_editText"
+        app:layout_constraintTop_toBottomOf="@+id/room_and_fam_layout" />
+
+    <EditText
+        android:id="@+id/last_name_editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:ems="10"
+        android:hint="@string/last_name_editText"
+        android:inputType="textPersonName"
+        android:textColor="@color/Black"
+        android:textColorHint="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/last_name_textView"
+        app:layout_constraintTop_toBottomOf="@+id/last_name_textView" />
 
     <TextView
         android:id="@+id/email_textView"
@@ -195,8 +226,8 @@
         android:textColor="@color/Black"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/name_editText"
-        app:layout_constraintTop_toBottomOf="@+id/name_editText" />
+        app:layout_constraintStart_toStartOf="@+id/first_name_editText"
+        app:layout_constraintTop_toBottomOf="@+id/first_name_editText" />
 
     <EditText
         android:id="@+id/email_editText"
@@ -209,6 +240,7 @@
         android:layout_marginRight="19dp"
         android:ems="10"
         android:hint="@string/email_editText"
+        android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textColor="@color/Black"
         android:textColorHint="@color/gray"
@@ -216,7 +248,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_textView" />
+
+        app:layout_constraintTop_toBottomOf="@+id/email_textView"
+        tools:targetApi="O" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -255,6 +289,7 @@
         android:layout_marginRight="19dp"
         android:ems="10"
         android:hint="@string/phone_editText"
+        android:importantForAutofill="no"
         android:inputType="phone"
         android:textColor="@color/Black"
         android:textColorHint="@color/gray"
@@ -262,7 +297,11 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_textView" />
+
+        android:maxLength="10"
+
+        app:layout_constraintTop_toBottomOf="@+id/phone_textView"
+        tools:targetApi="O" />
 
     <Button
         android:id="@+id/next_button"

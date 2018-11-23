@@ -12,8 +12,11 @@
 
     <string name="room_and_family">1 Room 1 Adults 0 children</string>
 
-    <string name="first_name_and_last_name">First and last name</string>
-    <string name="name_editText">Please insert your name</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="first_name_editText">Insert first name</string>
+    <string name="last_name_editText">Insert last name</string>
+
     <string name="name_auto_fillhint">username</string>
     <string name="email">Email</string>
     <string name="email_editText">Please insert your email</string>

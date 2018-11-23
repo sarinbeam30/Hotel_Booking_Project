@@ -25,10 +25,11 @@ public class room_and_fam_activity extends AppCompatActivity {
     private View.OnClickListener first_page = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent first_page = new Intent(room_and_fam_activity.this, MainActivity.class);
-            first_page.putExtra("ROOM",room);
-            first_page.putExtra("ADULT", adult);
-            first_page.putExtra("CHILDREN",children);
+            Intent second_page_to_first_page = new Intent(room_and_fam_activity.this, MainActivity.class);
+            second_page_to_first_page.putExtra("ROOM",room);
+            second_page_to_first_page.putExtra("ADULT", adult);
+            second_page_to_first_page.putExtra("CHILDREN",children);
+
 
             //STORE_VALUE_IN_ANDROID_SHARED_PREFERENCES
             SharedPreferences room_and_family = getSharedPreferences("room_and_family", Context.MODE_PRIVATE);
@@ -36,16 +37,17 @@ public class room_and_fam_activity extends AppCompatActivity {
             editor.putInt("ROOM", room);
             editor.putInt("ADULT", adult);
             editor.putInt("CHILDREN", children);
+            editor.commit();
+
+            startActivity(second_page_to_first_page);
 
             //CHECK_VALUE
+            /*
             System.out.println("ROOM : " + room);
             System.out.println("ADULT : " + adult);
             System.out.println("CHILDREN : " + children);
-            startActivity(first_page);
+            */
 
-            //SET_TEXT
-            //room_and_family_textview = (TextView) findViewById(R.id.room_and_family_textview);
-            //room_and_family_textview.setText("Sarin");
         }
     };
 

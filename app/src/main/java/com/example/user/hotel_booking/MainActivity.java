@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.FrameLayout;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
     TextView text_view_check_in_date, text_view_check_out_date;
     TextView room_and_family;
+
+    EditText f, l,e, p;
+
+    Button next_btn;
 
     ConstraintLayout check_in_and_check_out ;
 
@@ -111,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                     //CHECK_OUT_DAY_OF_WEEKS_STRING
                     Date set_check_out_day_of_weeks_string = new Date(year, month, dayOfMonth);
                     String check_out_days_of_week_string = dateFormatter.format(set_check_out_day_of_weeks_string).substring(0,3);
-                    System.out.println("CHECK OUT : " + check_out_days_of_week_string);
 
                     //STORE_VALUE_IN_ANDROID_SHARED_PREFERENCES
                     SharedPreferences checkin = getSharedPreferences("check_in",Context.MODE_PRIVATE);
@@ -138,26 +141,102 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //SECOND_PAGE
     private  View.OnClickListener second_page = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent room_and_fam = new Intent(MainActivity.this, room_and_fam_activity.class);
+            room_and_fam.putExtra("CHECK_IN_DATE", check_in_day);
             startActivity(room_and_fam);
+            finish();
         }
     };
 
+    //NAME_VALIDATION
+    //FIRST_NAME
+    private View.OnFocusChangeListener first_name_validation = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(f.getText().toString().matches("^[A-Z][a-z]+$")){
+                /*
+                Drawable customErrorDrawable = getResources().getDrawable(R.drawable.ic_error_black_24dp);
+                customErrorDrawable.setBounds(0,0,customErrorDrawable.getIntrinsicWidth(), customErrorDrawable.getIntrinsicHeight());
+                */
+            }
+            else {
+                f.setError("Invalid first_name");
+            }
+        }
+    };
 
+    //LAST_NAME
+    private View.OnFocusChangeListener last_name_validation = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(l.getText().toString().matches("^[A-Z][a-z]+$")){
+            }
+            else{
+                l.setError("Invalid Last_name");
+            }
+        }
+    };
+
+    //EMAIL_VALIDATION
+    private View.OnFocusChangeListener email_validation = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(e.getText().toString().matches("    ")){
+                e.setError("Invalid email");
+            }
+        }
+    };
+
+    //PHONE_VALIDATION
+    private View.OnFocusChangeListener phone_validation = new View.OnFocusChangeListener() {
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(p.getText().toString().length() > 10 || p.getText().toString().length() < 8)
+            {
+                p.setError("Invalid phone number");
+            }
+        }
+    };
+
+    //NEXT_BUTTON
+    private View.OnClickListener select_room = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            //STORE_VALUE_OF_NAME_AND_LAST_NAME_IN_ANDROID_SHARED_PREFERENCES
+            SharedPreferences name = getSharedPreferences("NAME_AND_LAST_NAME", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor_name = name.edit();
+            editor_name.putString("FIRST_NAME", f.getText().toString());
+            editor_name.putString("LAST_NAME", l.getText().toString());
+            editor_name.commit();
+
+            SharedPreferences email = getSharedPreferences("EMAIL", Context.MODE_PRIVATE);
+            SharedPreferences.Editor  editor_email = email.edit();
+            editor_email.putString("EMAIL", e.getText().toString());
+            editor_email.commit();
+
+            SharedPreferences phone_number = getSharedPreferences("PHONE_NUMBER", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor_phone_number = phone_number.edit();
+            editor_phone_number.putInt("PHONE_NUMBER", Integer.valueOf(p.getText().toString()));
+            editor_phone_number.commit();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Intent
+        //Intent_get_from_second_page_to_first_page
         Intent intent = getIntent();
         int room = intent.getIntExtra("ROOM",1);
         int adult = intent.getIntExtra("ADULT", 1);
         int children = intent.getIntExtra("CHILDREN",0);
+
 
         Log.d(TAG, "OnCreate");
 
@@ -180,7 +259,12 @@ public class MainActivity extends AppCompatActivity {
         String month_string = dateFormatter.format(now).substring(4,8);
 
         //SET_TEXT_CHECK_IN_DATE
-        text_view_check_in_date.setText(current_day + "\t " + month_string + "\t " + current_year);
+        if(check_in_day == null && check_in_month_string == null && check_in_year == null){
+            text_view_check_in_date.setText(current_day + "\t " + month_string + "\t " + current_year);
+        }
+        else{
+            text_view_check_in_date.setText(check_in_day + "\t " + check_in_month_string + "\t " + check_in_year);
+        }
         text_view_check_in_date.setOnClickListener(check_in_date_function);
 
 
@@ -188,7 +272,6 @@ public class MainActivity extends AppCompatActivity {
         text_view_check_out_date = (TextView) findViewById(R.id.check_out_DatePickerDialog);
 
         //SET_TEXT_CHECK_OUT_DATE
-
         SharedPreferences sp = getSharedPreferences("check_in", Context.MODE_PRIVATE);
         String check_in_day_int = sp.getString("check_in_day","1");                         // 1-21
         String check_in_day_of_week = sp.getString("check_in_day_of_week", "2");        // MONDAY TO FRIDAY
@@ -201,11 +284,6 @@ public class MainActivity extends AppCompatActivity {
 
         //TEXT_VIEW_ROOM_AND_FAM
         room_and_family =  (TextView) findViewById(R.id.room_and_family_textview);
-        System.out.println("ROOM : " + room);
-        System.out.println("ADULT : " + adult);
-        System.out.println("CHILDREN : " + children);
-
-        //CASE_1 :
         room_and_family.setText(String.valueOf(room) + " Room " + String.valueOf(adult) + " Adult " + String.valueOf(children) + " Children");
         room_and_family.setOnClickListener(second_page);
 
@@ -213,6 +291,25 @@ public class MainActivity extends AppCompatActivity {
         check_in_and_check_out = (ConstraintLayout) findViewById(R.id.check_in_and_check_out);
         //check_in_and_check_out.setBackgroundColor(getResources().getColor(R.color.Beige));
         //check_in_and_check_out.setForeground(getResources().getColor(R.color.Black));
+
+
+        //GET_FIRST_NAME_AND_LAST_NAME
+        f = (EditText) findViewById(R.id.first_name_editText);
+        f.setOnFocusChangeListener(first_name_validation);
+        l = (EditText) findViewById(R.id.last_name_editText);
+        l.setOnFocusChangeListener(last_name_validation);
+
+        //GET_E_MAIL_ADRRESS
+        e = (EditText) findViewById(R.id.email_editText);
+        e.setOnFocusChangeListener(email_validation);
+
+        //GET_PHONE_NUMBER
+        p = (EditText) findViewById(R.id.phone_editText);
+        p.setOnFocusChangeListener(phone_validation);
+
+        next_btn = (Button) findViewById(R.id.next_button);
+        next_btn.setOnClickListener(select_room);
+
     }
 
 
