@@ -26,6 +26,10 @@ public class room_and_fam_activity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent second_page_to_first_page = new Intent(room_and_fam_activity.this, MainActivity.class);
+            if(room == 0){room = 1;}
+            if(adult == 0){ adult = 1;}
+            if(children == 0){ children = 0;}
+
             second_page_to_first_page.putExtra("ROOM",room);
             second_page_to_first_page.putExtra("ADULT", adult);
             second_page_to_first_page.putExtra("CHILDREN",children);
@@ -42,11 +46,11 @@ public class room_and_fam_activity extends AppCompatActivity {
             startActivity(second_page_to_first_page);
 
             //CHECK_VALUE
-            /*
+
             System.out.println("ROOM : " + room);
             System.out.println("ADULT : " + adult);
             System.out.println("CHILDREN : " + children);
-            */
+
 
         }
     };

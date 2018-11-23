@@ -199,6 +199,9 @@ public class MainActivity extends AppCompatActivity {
             {
                 p.setError("Invalid phone number");
             }
+            if(p.getText().toString() == null || p.getText().toString() == ""){
+                p.setText("000000000");
+            }
         }
     };
 
@@ -221,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
 
             SharedPreferences phone_number = getSharedPreferences("PHONE_NUMBER", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor_phone_number = phone_number.edit();
-            editor_phone_number.putInt("PHONE_NUMBER", Integer.valueOf(p.getText().toString()));
+            editor_phone_number.putString("PHONE_NUMBER", p.getText().toString());
             editor_phone_number.commit();
         }
     };
